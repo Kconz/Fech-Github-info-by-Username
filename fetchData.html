@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch-Data</title>
+  </head>
+  <body>
+    <textarea
+      id="content"
+      col="150"
+      rows="100"
+      style="width: 100%;"
+    ></textarea>
+
+    <script>
+              let fetchGithubInfo = (username) =>{
+          fetch('https://api.github.com/users/' + username)
+          .then(response =>response.json())
+          .then(data =>{
+            const str = JSON.stringify(data,undefined,2);
+            document.getElementById("content").innerHTML = str;
+          })
+          .catch(error => console.log(error));
+      }
+      // Username in Github
+      fetchGithubInfo('basgm45');
+    </script>
+  </body>
+</html>
